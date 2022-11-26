@@ -21,8 +21,8 @@
   "simulatorPluginLibVersion": {},
   "condition": {},
   "srcMiniprogramRoot": "miniprogram/",
-  "appid": "wxf05fbcee1885f560",
-  "libVersion": "2.27.3",
+  "appid": "wx1d36d6a7e31fab79",
+  "libVersion": "2.28.0",
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
