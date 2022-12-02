@@ -1,0 +1,15 @@
+{
+  "name": "livetour-miniprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lin-ui": "^0.9.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HelloC",
+  "license": "Apache-2.0"
+}

@@ -8,6 +8,7 @@
   "compileType": "miniprogram",
   "projectname": "ts-demo",
   "setting": {
+    "ignoreDevUnusedFiles": false,
     "useCompilerPlugins": [
       "typescript"
     ],
@@ -15,7 +16,12 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "ignoreUploadUnusedFiles": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},

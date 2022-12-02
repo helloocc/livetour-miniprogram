@@ -1,0 +1,8 @@
+<!--pages/index/live_info.wxml-->
+<l-collapse type="accordion">
+  <view wx:for="{{liveshow}}" wx:for-index="key" wx:for-item="show" wx:key="id">
+    <l-collapse-item title=" {{show.date}} - {{show.performers}} - {{show.site}}">
+      link: {{show.url}}
+    </l-collapse-item>
+  </view>
+</l-collapse>
