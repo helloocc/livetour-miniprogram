@@ -5,17 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    liveshow: [
-      { "id": 1, "performers": "111", "site": "222", "date": "2023.01.01", "url": "www" },
-      { "id": 2, "performers": "aaa", "site": "bbb", "date": "2023.01.01", "url": "http" },
-      { "id": 3, "performers": "ccc", "site": "ddd", "date": "2023.01.02", "url": "www" },
-    ]
+    showData: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    let that = this
+    wx.request({
+      url: '',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res: any) {
+        console.log(res.data)
+        that.setData({
+          showData: res.data.data
+        })
+
+      }
+    })
 
   },
 
@@ -23,7 +34,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**

@@ -1,1 +1,10 @@
 /* pages/index/live_info.wxss */
+.show-box {
+  padding: 15px;
+}
+
+.title {
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
