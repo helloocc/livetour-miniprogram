@@ -1,4 +1,5 @@
 // pages/index/live_info.ts
+import moment from 'moment';
 Page({
 
   /**
@@ -14,17 +15,22 @@ Page({
   onLoad() {
     let that = this
     wx.request({
-      url: '',
+      url: 'https://www.chenyunfei.cn/liveshow_list',
       data: {},
       header: {
         'content-type': 'application/json'
       },
       success(res: any) {
         console.log(res.data)
+        for (let month_data of res.data.data) {
+          for (let item of month_data.month_show) {
+            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD')
+          }
+        }
         that.setData({
           showData: res.data.data
         })
-
+        console.log(res.data)
       }
     })
 

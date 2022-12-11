@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "lin-ui": "^0.9.12"
+    "lin-ui": "^0.9.12",
+    "moment": "^2.29.4"
   },
   "devDependencies": {},
   "scripts": {

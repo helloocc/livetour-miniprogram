@@ -1,12 +1,35 @@
 <!--pages/index/live_info.wxml-->
-<view class="show-box">
+<view class="show-container">
+  <l-search-bar placeholder="搜索" bg-color="#f6f6f6" shape="circle" front-text="杭州" />
   <view class="show-data">
-    <l-collapse type="accordion">
-      <view class="title" wx:for="{{showData}}" wx:for-index="key" wx:for-item="show" wx:key="id">
-        <l-collapse-item title="{{show.show_time}}-{{show.site}}-{{show.performers}}">
-          link: {{show.url}}
-        </l-collapse-item>
+    <view wx:for="{{showData}}" wx:for-item="monthData" wx:key="id">
+      <view class="month-data">
+        <l-radio-group>
+          <l-radio key="1" checked="{{false}}">{{monthData.month}}月</l-radio>
+        </l-radio-group>
+        <l-collapse type="accordion">
+          <view wx:for="{{monthData.month_show}}" wx:for-index="key" wx:for-item="show">
+            <l-collapse-item l-title-class="l-title-class" title="{{show.show_time}}  |  {{show.performers}}">
+              <text>地点：{{show.site}}\n链接：{{show.url}}</text>
+              <l-card type="avatar" l-class="card" image="/image/2.png" title="七月在夏天" describe="18个小时前">
+                <view class="avter-content">
+                  很简单，豆瓣现在这样就给大家指了一条明路:以后凡是这种国产的风口浪尖的的片子，会涉及到各方背后利益关系的片子...
+                </view>
+                <view class="avter-share-container">
+                  <view class="like-container">
+                    <l-icon name="like" color="#666" size="28" />
+                    <view class="number">160喜欢</view>
+                  </view>
+                  <view class="like-container">
+                    <l-icon name="default" color="#666" size="28" />
+                    <view class="number">10评论</view>
+                  </view>
+                </view>
+              </l-card>
+            </l-collapse-item>
+          </view>
+        </l-collapse>
       </view>
-    </l-collapse>
+    </view>
   </view>
 </view>
