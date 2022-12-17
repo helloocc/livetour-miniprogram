@@ -419,7 +419,10 @@ declare namespace WechatMiniprogram {
      * 最低基础库: 1.2.0
      */
     type ButtonGetPhoneNumber = CustomEvent<
-        GeneralCallbackResult & Partial<GetWeRunDataSuccessCallbackResult>
+        GeneralCallbackResult &
+            Partial<GetWeRunDataSuccessCallbackResult> & {
+                code: string
+            }
     >
 
     /**
@@ -920,18 +923,16 @@ declare namespace WechatMiniprogram {
      *
      * 最低基础库: 2.1.0
      */
-    type FunctionalNavigatorSuccess<
-        Detail extends IAnyObject = IAnyObject
-    > = CustomEvent<Detail, never, never>
+    type FunctionalNavigatorSuccess<Detail extends IAnyObject = IAnyObject> =
+        CustomEvent<Detail, never, never>
 
     /**
      * 功能页返回，且操作失败时触发， detail 格式与具体功能页相关
      *
      * 最低基础库: 2.1.0
      */
-    type FunctionalNavigatorFail<
-        Detail extends IAnyObject = IAnyObject
-    > = CustomEvent<Detail, never, never>
+    type FunctionalNavigatorFail<Detail extends IAnyObject = IAnyObject> =
+        CustomEvent<Detail, never, never>
 
     /**
      * 当 `target="miniProgram"` 时有效，跳转小程序成功

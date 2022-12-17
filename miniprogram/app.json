@@ -19,17 +19,13 @@
       {
         "pagePath": "pages/index/index",
         "text": "Hello"
-      },
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
       }
     ]
   },
   "usingComponents": {
+    "content-title": "/components/content-title/index",
+    "content-card": "/components/content-card/index",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
-    "l-collapse": "/miniprogram_npm/lin-ui/collapse/index",
-    "l-collapse-item": "/miniprogram_npm/lin-ui/collapse-item/index",
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-input": "/miniprogram_npm/lin-ui/input/index",
     "l-radio": "/miniprogram_npm/lin-ui/radio/index",

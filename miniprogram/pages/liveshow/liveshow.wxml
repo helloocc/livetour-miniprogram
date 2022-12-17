@@ -4,31 +4,30 @@
   <view class="show-data">
     <view wx:for="{{showData}}" wx:for-item="monthData" wx:key="id">
       <view class="month-data">
-        <l-radio-group>
-          <l-radio key="1" checked="{{false}}">{{monthData.month}}月</l-radio>
-        </l-radio-group>
-        <l-collapse type="accordion">
-          <view wx:for="{{monthData.month_show}}" wx:for-index="key" wx:for-item="show">
-            <l-collapse-item l-title-class="l-title-class" title="{{show.show_time}}  |  {{show.performers}}">
-              <text>地点：{{show.site}}\n链接：{{show.url}}</text>
-              <l-card type="avatar" l-class="card" image="/image/2.png" title="七月在夏天" describe="18个小时前">
-                <view class="avter-content">
-                  很简单，豆瓣现在这样就给大家指了一条明路:以后凡是这种国产的风口浪尖的的片子，会涉及到各方背后利益关系的片子...
-                </view>
-                <view class="avter-share-container">
-                  <view class="like-container">
-                    <l-icon name="like" color="#666" size="28" />
-                    <view class="number">160喜欢</view>
+        <content-card name="{{monthData.month}}月演出">
+          <l-collapse type="accordion">
+            <view wx:for="{{monthData.month_show}}" wx:for-index="key" wx:for-item="show">
+              <l-collapse-item l-title-class="l-title-class" title="{{show.show_day}}  |  {{show.performers}}">
+                <text>时间：{{show.show_time}}\n地点：{{show.site}}\n链接：{{show.url}}</text>
+                <l-card type="avatar" l-class="card" image="/image/2.png" title="七月在夏天" describe="18个小时前">
+                  <view class="avter-content">
+                    很简单，豆瓣现在这样就给大家指了一条明路:以后凡是这种国产的风口浪尖的的片子，会涉及到各方背后利益关系的片子...
                   </view>
-                  <view class="like-container">
-                    <l-icon name="default" color="#666" size="28" />
-                    <view class="number">10评论</view>
+                  <view class="avter-share-container">
+                    <view class="like-container">
+                      <l-icon name="like" color="#666" size="28" />
+                      <view class="number">160喜欢</view>
+                    </view>
+                    <view class="like-container">
+                      <l-icon name="default" color="#666" size="28" />
+                      <view class="number">10评论</view>
+                    </view>
                   </view>
-                </view>
-              </l-card>
-            </l-collapse-item>
-          </view>
-        </l-collapse>
+                </l-card>
+              </l-collapse-item>
+            </view>
+          </l-collapse>
+        </content-card>
       </view>
     </view>
   </view>

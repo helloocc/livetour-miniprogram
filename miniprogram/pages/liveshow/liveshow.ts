@@ -24,7 +24,8 @@ Page({
         console.log(res.data)
         for (let month_data of res.data.data) {
           for (let item of month_data.month_show) {
-            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD')
+            item.show_day = moment(item.show_time * 1000).format('YYYY.MM.DD')
+            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD HH:mm')
           }
         }
         that.setData({

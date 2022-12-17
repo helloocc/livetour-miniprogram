@@ -1,13 +1,21 @@
 /* pages/index/live_info.wxss */
 .show-container {
-  padding: 10px 0;
+  padding: 30rpx 0;
 }
 
 .show-data {
-  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px -4rpx 16rpx 0px rgba(148, 163, 178, 0.05);
+  border-radius: 20rpx 20rpx 0px 0px;
+  border-bottom: 20rpx solid #f7f7f7;
+  margin-top: 30rpx;
 }
+
 .month-data {
-  padding: 10px 0;
+  padding: 5rpx;
 }
 
 .l-title-class {
@@ -16,81 +24,87 @@
   color: rgb(75, 74, 74) !important;
   font-size: 28rpx !important;
   font-size-adjust: 0.5;
- 
 }
 
-.card-dot {
-  width: 18rpx;
-  height: 18rpx;
-  border-radius: 50%;
-  border: 6rpx solid #3963bc;
-  margin-left: 26rpx;
-}
-
-.card-top {
+.ticket-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  border: 1px #eee dotted;
+  border-radius: 20rpx;
+}
+
+.ticket-container-top {
+  display: flex;
   align-items: center;
-  width: 750rpx;
-  height: 100rpx;
+  padding: 40rpx 30rpx;
+  justify-content: space-between;
 }
 
-.content-name {
-  font-size: 28rpx;
-  font-family: PingFangSC-Regular;
-  font-weight: 400;
-  color: rgba(69, 82, 107, 1);
-  line-height: 20px;
-  margin-left: 8px;
-}
-
-.card {
-  margin: 10rpx auto !important;
-}
-
-.right-card {
-  height: 180rpx !important;
-  width: 220rpx !important;
-  border-radius: 12rpx !important;
-}
-
-.content {
-  margin-top: 10rpx;
-  color: #666;
-  font-size: 26rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
-.avter-content {
-  margin-top: 10rpx;
-  color: #333;
-  font-size: 26rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-}
-
-.avter-share-container{
+.ticket-left {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: column;
 }
 
-.like-container{
-  display: flex;
-  flex-direction: row;
-  margin-left: 40rpx;
-  align-items: center
+.ticket-left>.name {
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: bold;
 }
 
-.number{
-  color: #666;
+.ticket-left>.date {
+  margin-top: 16rpx;
+  color: #999;
   font-size: 24rpx;
-  margin-left: 12rpx;
+}
+
+.ticket-right {
+  display: flex;
+  align-items: flex-end;
+  color: #3963BC;
+  line-height: 1;
+}
+
+.ticket-right>.number {
+  font-size: 50rpx;
+}
+
+.ticket-right>.text {
+  font-size: 24rpx;
+  margin-left: 6rpx;
+}
+
+.ticket-container-bottom {
+  border-top: 1px #eee dashed;
+  padding: 6rpx 30rpx;
+}
+
+.ticket-container-bottom .title {
+  width: 100%;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-container-bottom text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.l-title-class {
+  padding-left: 10rpx !important;
+  padding-right: 10rpx !important;
+}
+
+.l-body-class {
+  padding-left: 0 !important;
+}
+
+.ticket-detail-container {
+  display: flex;
+  align-items: center;
+}
+
+.ticket-detail-container l-icon {
+  margin-left: 6rpx;
 }
