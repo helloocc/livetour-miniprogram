@@ -10,7 +10,8 @@ Page({
    */
   data: {
     showData: [],
-    searchKey: ""
+    searchKey: "",
+    isNotify: false
   },
 
   /**
@@ -20,43 +21,11 @@ Page({
     this.doQuery()
   },
 
-  flushData: function (e: any) {
-    this.setData({
-      searchKey: e.detail.value
-    })
-    this.doQuery()
-    wx.showToast({
-      title: this.data.searchKey + "搜索成功"
-    });
-  },
-
-  doQuery() {
-    let that = this
-    wx.request({
-      url: URL + LIVESHOW,
-      data: { 'query': that.data.searchKey },
-      header: {
-        'content-type': 'application/json'
-      },
-      success(res: any) {
-        for (let month_data of res.data.data) {
-          for (let item of month_data.month_show) {
-            item.show_day = moment(item.show_time * 1000).format('MM.DD')
-            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD HH:mm')
-          }
-        }
-        that.setData({
-          showData: res.data.data
-        })
-        console.log(res.data)
-      }
-    })
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
+
   },
 
   /**
@@ -99,5 +68,42 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  onCancle() {
+    wx.showToast({
+      title: "取消搜索"
+    });
+    this.doQuery()
+  },
+
+  flushData(e: any) {
+    this.doQuery(e.detail.value)
+  },
+
+  doQuery(searchKey?: string) {
+    let that = this
+    let query = searchKey != undefined ? searchKey : that.data.searchKey
+    wx.request({
+      url: URL + LIVESHOW,
+      data: { 'query': query },
+      header: {
+        'content-type': 'application/json'
+      },
+      success(res: any) {
+        for (let month_data of res.data.data) {
+          for (let item of month_data.month_show) {
+            item.show_day = moment(item.show_time * 1000).format('MM.DD')
+            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD HH:mm')
+          }
+        }
+        that.setData({
+          showData: res.data.data,
+          isNotify: true
+        })
+        console.log(res.data)
+      }
+    })
   }
+
 })
