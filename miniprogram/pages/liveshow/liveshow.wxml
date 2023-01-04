@@ -1,10 +1,10 @@
 <!--pages/index/live_info.wxml-->
 <view class="show-container">
-  <l-search-bar placeholder="请输入演出日期或乐队名称" bind:linchange="flushData" bind:linconfirm="flushData" bind:lincancel="onCancle" bind:linclear="onCancle" bg-color="#f6f6f6" shape="circle" front-text="杭州" />
+  <l-search-bar placeholder="请输入演出日期或乐队名称" bind:linchange="flushData" bind:linconfirm="flushData" bind:lincancel="onCancle" bind:linclear="onCancle" bg-color="#f6f6f6" shape="circle" front-text="杭州" show-cancel="{{false}}" />
 
   <view class="show-data">
     <block wx:if="{{showData.length==0 && isNotify==true}}">
-     暂无结果
+      <content-card name="暂无结果"></content-card>
     </block>
     <block wx:else>
       <view wx:for="{{showData}}" wx:for-item="monthData" wx:key="id">
@@ -13,22 +13,13 @@
             <l-collapse type="accordion">
               <view wx:for="{{monthData.month_show}}" wx:key="key" wx:for-item="show">
                 <l-collapse-item l-title-class="l-title-class" title="{{show.show_day}}  |  {{show.performers}}">
-                  <text>时间：{{show.show_time}}\n地点：{{show.site}}\n链接：{{show.url}}</text>
-                  <l-card type="avatar" l-class="card" image="/image/2.png" title="七月在夏天" describe="18个小时前">
-                    <view class="avter-content">
-                      很简单，豆瓣现在这样就给大家指了一条明路:以后凡是这种国产的风口浪尖的的片子，会涉及到各方背后利益关系的片子...
-                    </view>
-                    <view class="avter-share-container">
-                      <view class="like-container">
-                        <l-icon name="like" color="#666" size="28" />
-                        <view class="number">160喜欢</view>
-                      </view>
-                      <view class="like-container">
-                        <l-icon name="default" color="#666" size="28" />
-                        <view class="number">10评论</view>
-                      </view>
-                    </view>
-                  </l-card>
+                  <text>时间：{{show.show_time}}\n地点：{{show.site}}\n</text>
+                  <view wx:if="{{show.url.length==0}}">
+                    购票：暂无
+                  </view>
+                  <view wx:else>
+                    购票：<l-button bind:lintap="copyText" height="43" size="mini" shape="semicircle" plain="{{true}}" data-text="{{show.url}}">复制到浏览器打开</l-button>
+                  </view>
                 </l-collapse-item>
               </view>
             </l-collapse>

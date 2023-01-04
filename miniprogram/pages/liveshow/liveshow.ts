@@ -104,6 +104,22 @@ Page({
         console.log(res.data)
       }
     })
-  }
+  },
+
+  copyText(e: any) {
+    console.log(e)
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res: any) {
+        wx.getClipboardData({
+          success: function (res: any) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
+    })
+  },
 
 })
