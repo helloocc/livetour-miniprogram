@@ -14,16 +14,18 @@
   margin-top: 30rpx;
 }
 
-.month-data {
-  padding: 5rpx;
-}
-
 .l-title-class {
   /* flex-direction: column; */
   /* align-items: center; */
   color: rgb(75, 74, 74) !important;
   font-size: 28rpx !important;
   font-size-adjust: 0.5;
+  padding-left: 10rpx !important;
+  padding-right: 10rpx !important;
+}
+
+.l-body-class {
+  padding-left: 0 !important;
 }
 
 .ticket-container {
@@ -91,14 +93,6 @@
   color: #999;
 }
 
-.l-title-class {
-  padding-left: 10rpx !important;
-  padding-right: 10rpx !important;
-}
-
-.l-body-class {
-  padding-left: 0 !important;
-}
 
 .ticket-detail-container {
   display: flex;
