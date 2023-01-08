@@ -1,4 +1,4 @@
-// pages/index/live_info.ts
+// pages/liveshow/liveshow.ts
 import moment from 'moment';
 
 const URL = "https://www.chenyunfei.cn"
@@ -24,69 +24,63 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {
-
-  },
+  onReady() { },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
-  },
+  onShow() { },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
+  onHide() { },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {
-
-  },
+  onUnload() { },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.doQuery()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {
-
-  },
+  onReachBottom() { },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
-
-  },
+  onShareAppMessage() { },
 
   onCancle() {
     wx.showToast({
       title: "取消搜索"
     });
+    this.setData({
+      searchKey: ""
+    })
     this.doQuery()
   },
 
   flushData(e: any) {
-    this.doQuery(e.detail.value)
+    this.setData({
+      searchKey: e.detail.value,
+    })
+    this.doQuery()
   },
 
-  doQuery(searchKey?: string) {
+  doQuery() {
     let that = this
-    let query = searchKey != undefined ? searchKey : that.data.searchKey
     wx.request({
       url: URL + LIVESHOW,
-      data: { 'query': query },
+      data: { 'query': this.data.searchKey },
       header: {
         'content-type': 'application/json'
       },
@@ -99,7 +93,7 @@ Page({
         }
         that.setData({
           showData: res.data.data,
-          isNotify: true
+          isNotify: true,
         })
         console.log(res.data)
       }
@@ -107,7 +101,6 @@ Page({
   },
 
   copyText(e: any) {
-    console.log(e)
     wx.setClipboardData({
       data: e.currentTarget.dataset.text,
       success: function (res: any) {
@@ -116,8 +109,10 @@ Page({
             wx.showToast({
               title: '复制成功'
             })
+            console.log(res)
           }
         })
+        console.log(res)
       }
     })
   },

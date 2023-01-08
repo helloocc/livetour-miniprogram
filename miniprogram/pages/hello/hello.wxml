@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="info-container">
+  <view class="contactInfo">
+    <content-card name="联系开发者">
+      <view class="qrcode">
+        <image style="width: 330px; height: 330px;" mode="aspectFit" src="{{devContactImg}}"></image>
+      </view>
+    </content-card>
+    <content-card name="加演出群">
+      <view class="qrcode">
+        <image style="width: 330px; height: 330px;" mode="aspectFit" src="{{groupContactImg}}"></image>
+      </view>
+    </content-card>
+  </view>
+</view>

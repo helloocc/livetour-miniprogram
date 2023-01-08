@@ -1,24 +1,28 @@
 {
   "pages": [
     "pages/liveshow/liveshow",
+    "pages/hello/hello",
     "pages/index/index",
     "pages/logs/logs"
   ],
   "window": {
     "navigationBarTitleText": "LiveTour",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/liveshow/liveshow",
-        "text": "演出"
+        "iconPath": "images/rock.png",
+        "selectedIconPath": "images/rock-selected.png"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "Hello"
+        "pagePath": "pages/hello/hello",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-selected.png"
       }
     ]
   },

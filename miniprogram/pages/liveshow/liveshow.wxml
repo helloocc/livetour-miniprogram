@@ -1,4 +1,4 @@
-<!--pages/index/live_info.wxml-->
+<!--pages/liveshow/liveshow.wxml-->
 <view class="show-container">
   <l-search-bar placeholder="请输入演出日期或乐队名称" bind:linchange="flushData" bind:linconfirm="flushData" bind:lincancel="onCancle" bind:linclear="onCancle" bg-color="#f6f6f6" shape="circle" front-text="杭州" show-cancel="{{false}}" />
 
@@ -17,7 +17,7 @@
                   购票：暂无
                 </view>
                 <view wx:else>
-                  购票：<l-button bind:lintap="copyText" height="43" size="mini" shape="semicircle" plain="{{true}}" data-text="{{show.url}}">复制到浏览器打开</l-button>
+                  购票：<l-button type="success" bind:lintap="copyText" height="43" size="mini" shape="semicircle" plain="{{true}}" data-text="{{show.url}}">复制到浏览器打开</l-button>
                 </view>
               </l-collapse-item>
             </view>

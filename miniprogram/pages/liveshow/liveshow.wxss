@@ -1,4 +1,4 @@
-/* pages/index/live_info.wxss */
+/* pages/liveshow/liveshow.wxss */
 .show-container {
   padding: 30rpx 0;
 }
@@ -92,7 +92,6 @@
   font-size: 22rpx;
   color: #999;
 }
-
 
 .ticket-detail-container {
   display: flex;
