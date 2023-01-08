@@ -3,12 +3,12 @@
   <view class="contactInfo">
     <content-card name="联系开发者">
       <view class="qrcode">
-        <image style="width: 330px; height: 330px;" mode="aspectFit" src="{{devContactImg}}"></image>
+        <image src="{{devContactImg}}" style="width: 330px; height: 330px;" mode="aspectFit" show-menu-by-longpress="true"></image>
       </view>
     </content-card>
     <content-card name="加演出群">
       <view class="qrcode">
-        <image style="width: 330px; height: 330px;" mode="aspectFit" src="{{groupContactImg}}"></image>
+        <image src="{{groupContactImg}}" style="width: 330px; height: 330px;" mode="aspectFit" show-menu-by-longpress="true"></image>
       </view>
     </content-card>
   </view>
