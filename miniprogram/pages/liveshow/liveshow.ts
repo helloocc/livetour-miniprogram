@@ -89,6 +89,8 @@ Page({
           for (let item of month_data.month_show) {
             item.show_day = moment(item.show_time * 1000).format('MM.DD')
             item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD HH:mm')
+            item.is_festival = item.title.includes('音乐节') ? true : false
+            item.show_title = item.is_festival ? item.title : item.performers
           }
         }
         that.setData({

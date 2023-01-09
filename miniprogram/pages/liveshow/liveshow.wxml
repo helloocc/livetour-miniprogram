@@ -1,6 +1,6 @@
 <!--pages/liveshow/liveshow.wxml-->
 <view class="show-container">
-  <l-search-bar placeholder="请输入演出日期或乐队名称" bind:linchange="flushData" bind:linconfirm="flushData" bind:lincancel="onCancle" bind:linclear="onCancle" bg-color="#f6f6f6" shape="circle" front-text="杭州" show-cancel="{{false}}" />
+  <l-search-bar placeholder="输入乐队名或演出地点" bind:linchange="flushData" bind:linconfirm="flushData" bind:lincancel="onCancle" bind:linclear="onCancle" bg-color="#f6f6f6" shape="circle" front-text="杭州" show-cancel="{{false}}" />
 
   <view class="show-data">
     <block wx:if="{{showData.length==0 && isNotify==true}}">
@@ -11,13 +11,16 @@
         <content-card name="{{monthData.month}}月演出">
           <l-collapse type="accordion">
             <view wx:for="{{monthData.month_show}}" wx:key="key" wx:for-item="show">
-              <l-collapse-item l-title-class="l-title-class" title="{{show.show_day}}  |  {{show.performers}}">
+              <l-collapse-item l-title-class="l-title-class" title="{{show.show_day}}  |  {{show.show_title}}">
+                <view wx:if="{{show.is_festival}}">
+                  <text>阵容：{{show.performers}}</text>
+                </view>
                 <text>时间：{{show.show_time}}\n地点：{{show.site}}\n</text>
-                <view wx:if="{{show.url.length==0}}">
-                  购票：暂无
+                <view wx:if="{{show.url}}">
+                  购票：<l-button type="success" bind:lintap="copyText" height="40" size="mini" shape="semicircle" plain="{{true}}" data-text="{{show.url}}">复制到浏览器打开</l-button>
                 </view>
                 <view wx:else>
-                  购票：<l-button type="success" bind:lintap="copyText" height="40" size="mini" shape="semicircle" plain="{{true}}" data-text="{{show.url}}">复制到浏览器打开</l-button>
+                  购票：暂无
                 </view>
               </l-collapse-item>
             </view>
