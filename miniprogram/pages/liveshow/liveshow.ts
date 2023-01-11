@@ -1,8 +1,7 @@
 // pages/liveshow/liveshow.ts
-import moment from 'moment';
-
-const URL = "https://www.chenyunfei.cn"
-const LIVESHOW = "/liveshow_list"
+import moment from "moment";
+import { SHARE_TITILE, URL, LIVESHOW } from "../../utils/const";
+import { getWeek } from "../../utils/util";
 
 Page({
   /**
@@ -11,95 +10,107 @@ Page({
   data: {
     showData: [],
     searchKey: "",
-    isNotify: false
+    isNotify: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    this.doQuery()
+    this.doQuery();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() { },
+  onReady() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() { },
+  onShow() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() { },
+  onHide() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() { },
+  onUnload() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    this.doQuery()
-    wx.stopPullDownRefresh()
+    this.doQuery();
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() { },
+  onReachBottom() {},
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() { },
+  onShareAppMessage() {
+    return {
+      title: SHARE_TITILE,
+    };
+  },
+
+  onShareTimeline() {
+    return {
+      title: SHARE_TITILE,
+    };
+  },
 
   onCancle() {
     wx.showToast({
-      title: "取消搜索"
+      title: "取消搜索",
     });
     this.setData({
-      searchKey: ""
-    })
-    this.doQuery()
+      searchKey: "",
+    });
+    this.doQuery();
   },
 
   flushData(e: any) {
     this.setData({
       searchKey: e.detail.value,
-    })
-    this.doQuery()
+    });
+    this.doQuery();
   },
 
   doQuery() {
-    let that = this
+    let that = this;
     wx.request({
       url: URL + LIVESHOW,
-      data: { 'query': this.data.searchKey },
+      data: { query: this.data.searchKey },
       header: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
       success(res: any) {
         for (let month_data of res.data.data) {
           for (let item of month_data.month_show) {
-            item.show_day = moment(item.show_time * 1000).format('MM.DD')
-            item.show_time = moment(item.show_time * 1000).format('YYYY.MM.DD HH:mm')
-            item.is_festival = item.title.includes('音乐节') ? true : false
-            item.show_title = item.is_festival ? item.title : item.performers
+            let show_time = item.show_time * 1000;
+            item.show_day = moment(show_time).format("MM.DD");
+            item.show_time = moment(show_time).format("YYYY.MM.DD HH:mm");
+            item.show_weekday = getWeek(show_time);
+            item.is_festival = item.title.includes("音乐节") ? true : false;
+            item.show_title = item.is_festival ? item.title : item.performers;
           }
         }
         that.setData({
           showData: res.data.data,
           isNotify: true,
-        })
-        console.log(res.data)
-      }
-    })
+        });
+        console.log(res.data);
+      },
+    });
   },
 
   copyText(e: any) {
@@ -109,14 +120,13 @@ Page({
         wx.getClipboardData({
           success: function (res: any) {
             wx.showToast({
-              title: '复制成功'
-            })
-            console.log(res)
-          }
-        })
-        console.log(res)
-      }
-    })
+              title: "复制成功",
+            });
+            console.log(res);
+          },
+        });
+        console.log(res);
+      },
+    });
   },
-
-})
+});
