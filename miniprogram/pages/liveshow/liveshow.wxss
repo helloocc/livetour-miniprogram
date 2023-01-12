@@ -1,6 +1,6 @@
 /* pages/liveshow/liveshow.wxss */
 .show-container {
-  padding: 30rpx 0;
+  padding-top: 20rpx;
 }
 
 .show-data {
